@@ -1,0 +1,5 @@
+client.focused
+client.focused_inactive
+client.unfocused
+client.urgent
+client.background
