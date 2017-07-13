@@ -38,7 +38,7 @@ bindsym $mod+Return exec terminator
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec exec rofi -show run # dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -165,6 +165,8 @@ bindsym XF86AudioMute exec $volumepath/volume -m -n # -t $statuscmd -u $statussi
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym Control+Up exec xbacklight -inc 5
+bindsym Control+Down exec xbacklight -dec 5
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -200,9 +202,14 @@ exec --no-startup-id nm-applet
 exec dropbox start
 
 # start flux daemon
-exec xflux -z 94301
+exec xflux -l 48.5384 -g 9.0606 # -z 94301
 
 client.focused #689d6a #689d6a #282828 #282828
 client.focused_inactive #1d2021 #1d2021 #928374 #282828
 client.unfocused #32302f #32302f #928374 #282828
 client.urgent #cc241d #cc241d #ebdbb2 #282828
+
+# Useful for screen recording.
+for_window [title="^screencap"] floating enable
+
+exec unity-settings-daemon
